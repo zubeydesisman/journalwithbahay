@@ -12,7 +12,8 @@ $(document).ready(function(){
     var inputtedTitle = $("input#title").val();
     var inputtedBody = $("input#body").val();
     var newEntry = new Entry (inputtedTitle, inputtedBody);
-     // newEntry.vowelCount();
-    $("#result").text(newEntry.count());
+
+     $("#word-count").text("The number of words in total: " + newEntry.wordCount());
+     $("#count").text("The number of vowels and consonants: " + newEntry.count());
   });
 });
