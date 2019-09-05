@@ -10,18 +10,18 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-   devtool: 'eval-source-map',
-   devServer: {
-   contentBase: './dist'
-  plugins:
+  devtool: 'eval-source-map',
+  devServer: {
+    contentBase: './dist'
+    plugins:
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-     title: 'Ping Pong',
-     template: './src/index.html',
-     inject: 'body'
-   })
- ],
+      title: 'Journal',
+      template: './src/index.html',
+      inject: 'body'
+    })
+  ],
   module: {
     rules: [
       {
@@ -31,15 +31,25 @@ module.exports = {
           'css-loader'
         ]
       },
-       {
-          test: /\.js$/,
-          exclude: [
-            /node_modules/,
-            /spec/
-          ],
-          loader: "eslint-loader"
-          }
-        ]
+      {
+        test: /\.js$/,
+        exclude: [
+          /node_modules/,
+          /spec/
+        ],
+        loader: "eslint-loader"
+      },
+
+      {
+        test: /\.js$/,
+        exclude: [
+          /node_modules/,
+          /spec/
+        ],
+        loader: "babel-loader",
+        options: {
+          presets: ['es2015']
+        }
       }
     ]
   }
